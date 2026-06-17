@@ -6777,16 +6777,6 @@
 		)
 		(uuid "139e71f2-8129-4eed-a68a-24c6eaae3338")
 	)
-	(label "D-_C"
-		(at 88.9 275.59 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "177d81fb-bc33-43f9-95c4-e94d67f29dc4")
-	)
 	(label "BEEPER"
 		(at 237.49 278.13 0)
 		(effects
@@ -6849,6 +6839,16 @@
 		)
 		(uuid "50cd2fb5-fd8e-4ac3-9de1-f3bca280b81c")
 	)
+	(label "D-"
+		(at 88.9 275.59 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5401fb91-d59b-4a52-913b-596f6ee4b63d")
+	)
 	(label "ADC_VBAT"
 		(at 232.41 217.17 0)
 		(effects
@@ -6880,7 +6880,7 @@
 		)
 		(uuid "60c85a56-30f6-4a94-b13c-347cb5c23103")
 	)
-	(label "D-_C"
+	(label "D-"
 		(at 88.9 270.51 0)
 		(effects
 			(font
@@ -6888,7 +6888,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "6267873b-05ae-4c39-9c5b-72b378984672")
+		(uuid "67eec245-0dd3-4bdc-a61b-fa9334e78eab")
 	)
 	(label "SPI0.MOSI"
 		(at 312.42 191.77 180)
@@ -6931,6 +6931,16 @@
 		)
 		(uuid "9c17ad23-bedd-4d3a-80ee-f8f8bc19f5b2")
 	)
+	(label "D+"
+		(at 88.9 273.05 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9e0aad21-f661-4220-8ed4-a4cf48e5c8af")
+	)
 	(label "D-"
 		(at 231.14 193.04 180)
 		(effects
@@ -6952,16 +6962,6 @@
 			(justify left bottom)
 		)
 		(uuid "a4fe8d03-29df-40f2-b127-8aa0752ba9ac")
-	)
-	(label "D+_C"
-		(at 88.9 273.05 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a87f9442-7e86-481c-ae12-d997372ea6b5")
 	)
 	(label "SPI1.MISO"
 		(at 312.42 212.09 180)
@@ -7027,7 +7027,7 @@
 		)
 		(uuid "e935630d-6e63-4c9f-a637-21a7a060c74f")
 	)
-	(label "D+_C"
+	(label "D+"
 		(at 88.9 278.13 0)
 		(effects
 			(font
@@ -7035,7 +7035,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "ebc189d1-f601-43fb-899c-ca4cf609581d")
+		(uuid "ea5d3e2f-8162-47f8-91b9-c31e3e444277")
 	)
 	(hierarchical_label "PIOUART1_TX"
 		(shape output)
