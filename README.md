@@ -11,6 +11,17 @@ Motor outputs are signal-level lines that drive an external 4-in-1 ESC (e.g. Ope
 
 > A smaller **[OpenFC-Lite-Mini](https://github.com/incutec-hw/OpenFC-Lite-Mini)** (20×20 mm, RP2354A) shares this design. **Both are being ordered for Rev 2;** this full-size board adds bigger pads, more I/O, full-size SD, and OSD debug pads.
 
+## Open source hardware certification
+
+<a href="https://certification.oshwa.org/be000026.html">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/oshwa-certified-dark.svg" />
+    <img src="images/oshwa-certified.svg" width="160" alt="OSHWA Certified Open Source Hardware — BE000026" />
+  </picture>
+</a>
+
+OpenFC-Lite is **certified open source hardware** by the [Open Source Hardware Association](https://www.oshwa.org/), OSHWA UID **[BE000026](https://certification.oshwa.org/be000026.html)**.
+
 ## Specifications
 
 | | |

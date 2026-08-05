@@ -61,5 +61,8 @@ hardware/schematic.json
 # Datasheets (downloadable)
 datasheets/
 
+# easyeda2kicad import cache
+.easyeda_cache/
+
 # Claude agent context (local only)
 CLAUDE.md
