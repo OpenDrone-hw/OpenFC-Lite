@@ -126,6 +126,11 @@ Target firmware is **Betaflight** on the RP2350 (PICO) platform. The RP2354B use
 
 Note: the RP2350 analog-OSD (FB_OSD) driver is still an open upstream Betaflight PR stack — OSD is not yet flyable from an upstream binary. See the [Wiki](https://github.com/incutec-hw/OpenFC-Lite/wiki) for bring-up status.
 
+## Links
+
+- Product page: [opendrone.be/products/openfc-lite](https://opendrone.be/products/openfc-lite)
+- Video channel: [JustFPV on YouTube](https://www.youtube.com/@justfpv1432)
+
 ## License
 
 Hardware licensed under [CERN-OHL-S-2.0](https://ohwr.org/cern_ohl_s_v2.txt). See [LICENSE](LICENSE).
