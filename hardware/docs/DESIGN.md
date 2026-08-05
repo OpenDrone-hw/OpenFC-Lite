@@ -31,8 +31,8 @@ Single RP2354B does everything: flight control, USB, DShot, software UARTs, LED 
 | OSD op-amp | U11 | COS8051SOT | C7463385 |
 | OSD comparator | U12 | TLV7031DPWR | C2876045 |
 | microSD slot | Card1 | TF PUSH (push-push) | C393941 |
-| Crystal | X1 | XTM250 12 MHz | - |
-| Buzzer / LED-strip FETs | Q1, Q2 | DMN1150UFB-7B | C2849580 |
+| Crystal | X1 | XTM25012000JT00351001, 12 MHz | C37635340 |
+| Buzzer / LED-strip FETs | Q1, Q2 | AP1606 | C2849580 |
 
 ## IMU
 
@@ -42,7 +42,7 @@ The IMU site is an LGA-14 footprint on SPI0 with a dedicated 1.8 V analog supply
 
 | Rail | Source | Regulator | Notes |
 |---|---|---|---|
-| +10V (switchable) | +BATT | LMR51430YFDDCR buck (U3), L2 4.7 uH | EN gated by the MCU (10V_ENABLE net). Feeds the VTX connector. |
+| +10V (switchable) | +BATT | LMR51430YFDDCR buck (U3), L2 4.7 uH | EN gated by the MCU (10V_ENABLE net). FB divider 100k : 6.49k sets about 9.85 V; 22 uF output cap (C26). Feeds the VTX connector. |
 | +5V_BUCK (always-on) | +BATT | LMR51430YFDDCR buck (U4), L3 4.7 uH | Battery-side 5 V source. |
 | +5V | +5V_BUCK / +5V_USB | TPS2116DRLR mux (U5) | Auto-selects battery vs USB source. |
 | +3.3V | +5V | LP5912-3.3DRVR (U7) | MCU IOVDD and VREG input, IMU I/O, microSD, OSD chain. |
@@ -82,7 +82,7 @@ A large number of through-hole solder pads (J*) expose rails and signal lines (5
 
 ## Analog OSD
 
-There is no MAX7456-class OSD chip. The OSD is a discrete chain driven by RP2354B PIO: a TLV7031 comparator (U12) separates sync from the camera video, a COS8051 op-amp (U11) buffers the video path, and an SN74LVC1G3157 SPDT analog switch (U10) overlays the MCU-generated pixels. Camera video enters on the 3-pin connector (U13), overlaid video leaves toward the VTX. The board carries OSD debug/bring-up pads that the Mini omits.
+There is no MAX7456-class OSD chip. The OSD is a discrete chain driven by RP2354B PIO: a TLV7031 comparator (U12) separates sync from the camera video, a COS8051 op-amp (U11) buffers the video path, and an SN74LVC1G3157 SPDT analog switch (U10) overlays the MCU-generated pixels. Camera video enters on the 3-pin connector (U13), overlaid video leaves on a solder pad (J34) for the analog VTX. The board carries OSD debug/bring-up pads that the Mini omits.
 
 ## Connectors
 
@@ -95,7 +95,7 @@ Pin-to-net mapping extracted from the schematic. All JST SH are SMD.
 | U14 | SM06B-SRSS-TB, 6-pin SMD JST SH | Peripheral: +5V, GND, PIO UART1 RX/TX, I2C0 SDA/SCL |
 | CN1 | SM04B-SRSS-TB, 4-pin SMD JST SH | Receiver: +5V, GND, PIO UART0 RX/TX |
 | U13 | SM03B-SRSS-TB, 3-pin SMD JST SH | Camera: +5V, GND, video in |
-| USB1 | Type-C 16P | Configuration and flashing |
+| USB1 | Type-C 16P | Configuration and flashing. USB full speed, D+/D- through 30 ohm series resistors (R10, R11) |
 
 ## Blackbox
 

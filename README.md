@@ -50,7 +50,7 @@ Part-level detail (regulators, OSD chain, connector pinouts) is in [hardware/doc
 |---|---|
 | `hardware/` | KiCad 10 project: schematics, PCB, panel, project-local libraries |
 | `hardware/docs/` | Design documentation ([DESIGN.md](hardware/docs/DESIGN.md), [REV3_CHANGELIST.md](hardware/docs/REV3_CHANGELIST.md)) |
-| `hardware/tools/` | Read-only analysis scripts (kicad-skip / pcbnew) |
+| `hardware/tools/` | Analysis and metadata scripts (kicad-skip / pcbnew) |
 | `hardware/production/` | Fabrication exports per revision (generated, not tracked in git) |
 | `libs/KiCad-Library` | Shared Incutec symbol/footprint/3D library (git submodule) |
 | `images/` | Board renders and certification marks |

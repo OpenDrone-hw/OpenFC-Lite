@@ -13,7 +13,7 @@ kicad-cli pcb drc --exit-code-violations hardware/OpenFC.kicad_pcb
 kicad-cli sch export netlist --format kicadsexpr -o /tmp/OpenFC.net hardware/OpenFC.kicad_sch
 ```
 
-- Read-only analysis scripts live in `hardware/tools/` (kicad-skip / pcbnew).
+- Analysis and metadata scripts live in `hardware/tools/` (kicad-skip / pcbnew). Most are read-only; some (`add_mpn_fields.py`, `add_emc_note.py`, `eco_strip_sheets.py`, `rebuild_blackbox.py`, `set_edgecuts_width.py`) modify design files when run with their write options.
 - Fabrication Toolkit config: `hardware/fabrication-toolkit-options.json` (tracked). Exports land in `hardware/production/` (gitignored).
 - Docs are deterministic: current fact only, no TODOs or plans. Design detail belongs in `hardware/docs/DESIGN.md`; staged next-revision changes in `hardware/docs/REV3_CHANGELIST.md`.
 - `main` is protected; push feature branches and open PRs.
