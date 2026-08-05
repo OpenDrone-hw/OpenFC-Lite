@@ -1,7 +1,7 @@
 # Rev 3 Changelist - OpenFC-Lite
 
 Running list of changes for the next hardware revision, collected during Rev 2
-bring-up and flight testing. Stan handles all schematic/PCB edits. Items are
+bring-up and flight testing. Schematic/PCB edits are made by the maintainer. Items are
 appended as found; nothing here is implemented yet.
 
 Rev 2 bring-up context: OpenDrone-Testing bring-up logs (2026-08-05 onward).
