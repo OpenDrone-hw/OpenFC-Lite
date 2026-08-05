@@ -32,9 +32,6 @@ replicate_layout.log
 # Production output (generated, re-exportable)
 **/production/
 
-# Fabrication toolkit config
-fabrication-toolkit-options.json
-
 # Python
 __pycache__/
 *.pyc
