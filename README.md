@@ -10,7 +10,7 @@ Open-source Betaflight flight controller built on the RP2354B, part of the incut
 ## Status
 
 **Hardware validated**, Rev 2, flown.
-Rev 2 boards fly with a rework pin mapping baked into the Betaflight target (`OPENFC_LITE_RP2350B`). The Rev 3 change list collected during Rev 2 bring-up is staged in [hardware/docs/REV3_CHANGELIST.md](hardware/docs/REV3_CHANGELIST.md).
+Known Rev 2 defects, the rework the flying boards run with, and the staged Rev 3 changes are listed in [hardware/docs/REV3_CHANGELIST.md](hardware/docs/REV3_CHANGELIST.md).
 
 ## Certification
 
@@ -33,7 +33,7 @@ OpenFC-Lite is **certified open source hardware** by the [Open Source Hardware A
 | Parameter | Value |
 |---|---|
 | MCU | RP2354B, dual-core ARM Cortex-M33, QFN-80, 2 MB stacked flash |
-| IMU | LGA-14 site on SPI0, dedicated 1.8 V analog rail; schematic carries LSM6DSV16XTR, Rev 2 built with BMI270 (see [DESIGN.md](hardware/docs/DESIGN.md)) |
+| IMU | LGA-14 site on SPI0, dedicated 1.8 V analog rail (see [DESIGN.md](hardware/docs/DESIGN.md)) |
 | Blackbox | microSD push-push slot on SPI1 (no onboard SPI flash) |
 | OSD | Analog, PIO-driven discrete chain (comparator, op-amp, SPDT switch), no OSD ASIC |
 | UARTs | 4: 2 hardware + 2 PIO software UARTs |
@@ -51,7 +51,7 @@ Part-level detail (regulators, OSD chain, connector pinouts) is in [hardware/doc
 | `hardware/` | KiCad 10 project: schematics, PCB, panel, project-local libraries |
 | `hardware/docs/` | Design documentation ([DESIGN.md](hardware/docs/DESIGN.md), [REV3_CHANGELIST.md](hardware/docs/REV3_CHANGELIST.md)) |
 | `hardware/tools/` | Analysis and metadata scripts (kicad-skip / pcbnew) |
-| `hardware/production/` | Fabrication exports per revision (generated, not tracked in git) |
+| `hardware/production/` | Fabrication exports (generated, gitignored), see [Manufacturing](#manufacturing) |
 | `libs/KiCad-Library` | Shared Incutec symbol/footprint/3D library (git submodule) |
 | `images/` | Board renders and certification marks |
 
@@ -60,9 +60,8 @@ Part-level detail (regulators, OSD chain, connector pinouts) is in [hardware/doc
 - Root schematic: `hardware/OpenFC.kicad_sch`, six sub-sheets: `rp2350a` (MCU, USB, crystal), `power`, `imu`, `osd`, `blackbox`, `pads`
 - Board layout: `hardware/OpenFC.kicad_pcb`, 6 copper layers
 - Panel for production: `hardware/OpenFC_Panel.kicad_pro` / `hardware/OpenFC_Panel.kicad_pcb`
-- `hardware/_filltest.kicad_pro` is a fill-test scratch project
 
-Libraries are project-local (`hardware/lib.kicad_sym`, `hardware/lib.pretty/`, `hardware/lib.3dshapes/`); the project lib tables also reference the shared `Incutec` library from the `libs/KiCad-Library` submodule, used for new parts. Clone with `--recursive` so those references resolve.
+Custom parts (MCU, regulators, connectors, crystal, card slot) come from the project-local libraries `hardware/lib.kicad_sym`, `hardware/lib.pretty/` and `hardware/lib.3dshapes/`. Passives, LEDs, test points and power symbols come from KiCad's stock libraries, so a stock KiCad 10 install is required. The project lib tables also declare the shared `Incutec` library from the `libs/KiCad-Library` submodule, which new parts go into; clone with `--recursive` so that reference resolves.
 
 ## Build and export
 
