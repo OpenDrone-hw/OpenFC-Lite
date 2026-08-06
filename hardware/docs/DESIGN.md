@@ -109,4 +109,10 @@ Rev 2 boards fly with a rework pin mapping baked into the Betaflight target (`OP
 
 ## Variants and revisions
 
-A smaller sibling, [OpenFC-Lite-Mini](https://github.com/incutec-hw/OpenFC-Lite-Mini) (20 x 20 mm, RP2354A), shares this design; the two differ in MCU package, GPIO count, and some I/O. This full-size board adds bigger pads, more I/O, and OSD debug pads. Fabrication sets are generated per revision into `hardware/production/` (gitignored) with the Fabrication Toolkit from the panel project (`hardware/OpenFC_Panel.kicad_pro`); the revision history is in [CHANGELOG.md](../../CHANGELOG.md) and the staged Rev 3 changes in [REV3_CHANGELIST.md](REV3_CHANGELIST.md).
+A smaller sibling, [OpenFC-Lite-Mini](https://github.com/incutec-hw/OpenFC-Lite-Mini) (20 x 20 mm, RP2354A), shares this design; the two differ in MCU package, GPIO count, and some I/O. This full-size board adds bigger pads, more I/O, and OSD debug pads. Fabrication sets are generated per revision into `hardware/production/` (gitignored) with the Fabrication Toolkit from the panel project (`hardware/OpenFC_Panel.kicad_pro`) and the staged Rev 3 changes in [REV3_CHANGELIST.md](REV3_CHANGELIST.md).
+
+## Revisions
+
+- **Rev3** (staged, not implemented): change list collected during Rev 2 bring-up, see [hardware/docs/REV3_CHANGELIST.md](hardware/docs/REV3_CHANGELIST.md). Headline items: fix KiCad-induced GND shorts on GPIO0-3/28/31, fix reversed gyro LED, decide the production IMU.
+- **Rev2** (2026-08, current): flown. Boards fly with a rework pin mapping baked into the Betaflight target (`OPENFC_LITE_RP2350B`) that works around GND shorts on GPIO0-3, GPIO28, and GPIO31. Assembled with BMI270 while the schematic still carries LSM6DSV16XTR.
+- **Rev1**: first prototype, bench-tested.
