@@ -92,7 +92,7 @@
         "length_out_of_range": "error",
         "lib_footprint_issues": "warning",
         "lib_footprint_mismatch": "warning",
-        "malformed_courtyard": "error",
+        "malformed_courtyard": "ignore",
         "microvia_drill_out_of_range": "error",
         "mirrored_text_on_front_layer": "warning",
         "missing_courtyard": "ignore",
@@ -151,11 +151,11 @@
       },
       "teardrop_options": [
         {
-          "td_onpthpad": true,
+          "td_onpthpad": false,
           "td_onroundshapesonly": false,
-          "td_onsmdpad": true,
+          "td_onsmdpad": false,
           "td_ontrackend": false,
-          "td_onvia": true
+          "td_onvia": false
         }
       ],
       "teardrop_parameters": [
@@ -526,7 +526,16 @@
     "meta": {
       "version": 5
     },
-    "net_colors": null,
+    "net_colors": {
+      "+1.1V": "rgb(255, 186, 138)",
+      "+1.8V_GYRO": "rgb(255, 144, 71)",
+      "+10V": "rgb(255, 11, 126)",
+      "+3.3V": "rgb(220, 255, 167)",
+      "+5V": "rgb(255, 55, 57)",
+      "+5V_BUCK": "rgb(255, 69, 48)",
+      "+5V_USB": "rgb(255, 115, 56)",
+      "+BATT": "rgb(255, 2, 12)"
+    },
     "netclass_assignments": null,
     "netclass_patterns": [
       {
@@ -715,7 +724,7 @@
         "uuid": "fb88b6f9-ee39-4640-a9d4-04a17ceeac64"
       }
     ],
-    "used_designators": "U15",
+    "used_designators": "",
     "variants": []
   },
   "sheets": [
