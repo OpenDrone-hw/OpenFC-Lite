@@ -10,7 +10,7 @@ Open-source Betaflight flight controller built on the RP2354B, part of the incut
 ## Status
 
 **Hardware validated**, Rev 2, flown.
-Rev 2 boards fly with a rework pin mapping baked into the Betaflight target (`OPENFC_LITE_RP2350B`). The Rev 3 change list collected during Rev 2 bring-up is staged in [hardware/docs/REV3_CHANGELIST.md](hardware/docs/REV3_CHANGELIST.md). Revision history: [CHANGELOG.md](CHANGELOG.md).
+Rev 2 boards fly with a rework pin mapping baked into the Betaflight target (`OPENFC_LITE_RP2350B`). The Rev 3 change list collected during Rev 2 bring-up is staged in [hardware/docs/REV3_CHANGELIST.md](hardware/docs/REV3_CHANGELIST.md).
 
 ## Certification
 
@@ -80,7 +80,7 @@ kicad-cli pcb export gerbers -o out/ hardware/OpenFC.kicad_pcb
 
 ## Manufacturing
 
-Fabricated and assembled at JLCPCB: 6-layer board, LCSC parts. Per-revision BOM, CPL, and gerber sets are generated into `hardware/production/` (gitignored) from the panel project with the Fabrication Toolkit, using the tracked `hardware/fabrication-toolkit-options.json`. Revision history: [CHANGELOG.md](CHANGELOG.md).
+Fabricated and assembled at JLCPCB: 6-layer board, LCSC parts. Per-revision BOM, CPL, and gerber sets are generated into `hardware/production/` (gitignored) from the panel project with the Fabrication Toolkit, using the tracked `hardware/fabrication-toolkit-options.json`.
 
 ## Contributing
 
