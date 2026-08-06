@@ -25,3 +25,9 @@ Rev 2 bring-up context: OpenDrone-Testing bring-up logs (2026-08-05 onward).
 3. **Production IMU**: Rev 2 boards are assembled with BMI270 while KiCad/BOM
    still says LSM6DSV16X; footprint also accepts ICM-426xx/456xx. Decide after
    flight testing, then align schematic, BOM, and Betaflight target defaults.
+4. **1.8 V gyro LDO, schematic and layout disagree**: `power.kicad_sch` has
+   U15 LP5912-1.8DRVR (WSON-6, C2876234), both `OpenFC.kicad_pcb` and the
+   production panel still have U6 NCV8187AMT180TAG (WDFN-6). Fabricated boards
+   get the NCV8187. Pick one part, then update the other file so the reference
+   designator and package match everywhere. Same pass: the schematic has solder
+   pads J45 and J46 that are not placed on the PCB.

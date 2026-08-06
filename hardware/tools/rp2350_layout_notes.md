@@ -2,74 +2,73 @@
 
 Source: RP2350 Datasheet §6.3.8.1, Hardware Design with RP2350 guide (Raspberry Pi).
 
-## Hard constraint: buck regulator must stay on MCU side
+Scope: placement of the RP2354B internal core regulator and the top/bottom split for
+OpenFC-Lite. The general layout rules (buck hot loops, crystal, USB routing, motor
+outputs, ESD, GND plane) are in [EMC_CHECKLIST.md](EMC_CHECKLIST.md) and are not
+repeated here.
+
+## Hard constraint: core regulator must stay on MCU side
 
 Direct quote from RP2350 Datasheet §6.3.8.1:
 
 > "Don't place any of C_IN / L_X / C_OUT on the opposite side of the PCB."
 > "Follow this layout as closely as possibly."
 
-This means the following MUST stay on the top side with the MCU:
+This means the following MUST stay on the top side with U2:
 
 | Ref | Part | Role |
 |---|---|---|
-| C_IN (4.7µF) | Buck input cap | part of high-current hot loop |
-| L_X (L1, 3.3µH, Abracon AOTA-B201610S3R3-101-T, 0806) | Buck inductor | switch-node path |
-| C_OUT (4.7µF) | Buck output cap | part of hot loop |
-| R3 (33Ω) + C9 (4.7µF) | VREG_AVDD filter | needs own GND via back to QFN pad |
-| DVDD 100nF × 2 (nearest regulator) | Core decoupling | part of COUT hot loop |
+| C19 | 4.7 uF on +3.3V | C_IN, part of the high-current hot loop |
+| L1 | AOTA-B201610S3R3-101-T, 3.3 uH, 0806 | L_X, VREG_LX switch-node path |
+| C20 | 4.7 uF on +1.1V | C_OUT, part of the hot loop |
+| R12 + C21 | 30R + 4.7 uF | VREG_AVDD filter, needs its own GND via back to the QFN pad |
+| C5 | 100 nF on +1.1V | core decoupling on the regulator side, part of the C_OUT loop |
 
-Footprint zone: ~6×4 mm cluster near pins 60-65.
+Footprint zone: ~6x4 mm cluster near pins 60-65.
 
 Additional rules for this zone:
-- Cut away copper immediately under L_X / VREG_LX switch node trace on top layer AND inner layer 2 (6-layer boards)
-- GND vias back to QFN center pad: use **2 adjacent vias** to reduce impedance, "short-as-possible"
-- CFILT GND path MUST NOT share vias with C_IN/C_OUT high-current GND
-- VREG_FB: feed from COUT output, do NOT route under LX
+- Cut away copper immediately under L1 and the VREG_LX trace, on the top layer AND on inner layer 2 (6-layer board)
+- GND vias back to the QFN centre pad: use **2 adjacent vias** to reduce impedance, "short-as-possible"
+- The VREG_AVDD filter GND path MUST NOT share vias with the C_IN/C_OUT high-current GND
+- VREG_FB: feed from the regulator output, do NOT route under L_X
 
 ## Can go on bottom side
 
 | Component | Rule |
 |---|---|
-| DVDD 100nF × 4-5 (far from regulator, opposite edge of QFN) | 2 GND vias per cap |
-| 2nd 4.7µF on V_OUT (C10, opposite edge) | Explicitly recommended by RPi to be AWAY from regulator |
-| IOVDD 100nF caps (all 8) | 2 GND vias per cap, directly under pin |
-| QSPI_IOVDD 100nF (pin 69) | same |
-| USB_OTP_VDD 100nF (pin 5) | same |
-| ADC_AVDD 100nF (pin 60 area) | same |
-| Crystal (12 MHz) + load caps | Risky but doable, see crystal notes |
-| USB ESD diode + Type-C connector | OK after R7/R8 |
+| Core decoupling away from the regulator (C1, 100 nF, opposite QFN edge) | 2 GND vias per cap |
+| 2nd 4.7 uF on +1.1V (C2, opposite edge) | Explicitly recommended by RPi to be AWAY from the regulator |
+| IOVDD, QSPI_IOVDD (pin 69), USB_OTP_VDD (pin 5), ADC_AVDD 100 nF caps | 2 GND vias per cap, directly under the pin |
+| Crystal X1 (12 MHz) + load caps C4, C8 | Risky but doable, see the parasitic budget below |
+| USB-C connector USB1 | OK once D+/D- has passed R10/R11 |
 
-## Crystal on bottom: caveats
+## Crystal on bottom: parasitic budget
 
 - RP2350 uses 10.5 pF total load, ~3 pF parasitic budget
-- Each via adds 0.3-0.5 pF → 2 vias = ~1 pF budget consumed
-- Place crystal directly under XIN/XOUT pins (pins 30/31), minimize stubs
-- Both load caps on same side as crystal
-- May need to retune R2 (1kΩ damping) or load caps (try 12pF instead of 15pF)
-- No ground flood between XIN/XOUT; maintain GND reference plane
+- Each via adds 0.3-0.5 pF, so 2 vias consume ~1 pF of that budget
+- Place the crystal directly under XIN/XOUT (pins 30/31) and minimise stubs
+- Retuning knobs if the oscillator misbehaves: R5 (1k damping) and the load caps C4/C8 (20 pF fitted)
+- Crystal guard ring and flood rules: EMC_CHECKLIST.md section 6
 
 ## USB: near-MCU placement
 
-- R7/R8 (27Ω series termination): stay on **top side** immediately adjacent to pins 66/67
-- Differential pair can transition to bottom via vias AFTER the series resistors
-- Add flanking GND vias at layer transition for return-path continuity
-- Solid uninterrupted GND beneath D+/D- the entire length
+- R10/R11 (30R series termination) stay on the **top side** immediately adjacent to pins 66/67
+- The differential pair may only transition to the bottom layer AFTER those resistors
+- Return path, impedance and stitching rules: EMC_CHECKLIST.md section 4
 
 ## Summary strategy for OpenFC-Lite
 
-Top side (MCU-only vision not achievable, keeps these):
-- RP2354B MCU
-- Buck cluster: C_IN, L1, C_OUT, R3, C9 (~5 small parts, ~6×4 mm)
-- 2 DVDD 100nF caps closest to regulator
-- USB R7/R8 27Ω series resistors
+Top side:
+- RP2354B (U2)
+- Core regulator cluster: C19, L1, C20, R12, C21, C5 (~6x4 mm)
+- USB series resistors R10, R11
 
 Bottom side:
-- 4-5 remaining DVDD 100nF caps + 4.7µF C10 on opposite QFN edge
-- All IOVDD / QSPI_IOVDD / USB_OTP_VDD / ADC_AVDD 100nF caps
-- Crystal + load caps (directly under pins 30/31)
-- USB ESD diode + USB-C connector
-- All other support circuits (LDOs, power mux, IMU, OSD, SD card, connectors etc.)
+- Remaining +1.1V decoupling: C1 100 nF and C2 4.7 uF on the opposite QFN edge
+- All IOVDD / QSPI_IOVDD / USB_OTP_VDD / ADC_AVDD 100 nF caps
+- Crystal X1 + load caps, directly under pins 30/31
+- USB-C connector
+- All other support circuits: LDOs, power mux, IMU, OSD, SD card, connectors
 
 ## Sources
 

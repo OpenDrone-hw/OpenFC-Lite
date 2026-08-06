@@ -2,7 +2,7 @@
 """
 OpenFC-Lite Design Audit.
 
-Parses the KiCad 9 design using kicad-skip (schematics) and pcbnew (PCB netlist)
+Parses the KiCad 10 design using kicad-skip (schematics) and pcbnew (PCB netlist)
 and produces a comprehensive hardware inventory + Betaflight MFG validation report.
 
 Run with KiCad's bundled Python so pcbnew is available:

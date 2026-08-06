@@ -26,7 +26,7 @@ Single RP2354B does everything: flight control, USB, DShot, software UARTs, LED 
 | Buck inductors | L2, L3 | XRTC303020D4R7MBCA 4.7 uH | C39846837 |
 | 5 V power mux | U5 | TPS2116DRLR | C3235557 |
 | 3.3 V LDO | U7 | LP5912-3.3DRVR | C524780 |
-| 1.8 V gyro LDO | U15 | LP5912-1.8DRVR | C2876234 |
+| 1.8 V gyro LDO (schematic) | U15 | LP5912-1.8DRVR | C2876234 |
 | OSD SPDT switch | U10 | SN74LVC1G3157DTBR | C2673087 |
 | OSD op-amp | U11 | COS8051SOT | C7463385 |
 | OSD comparator | U12 | TLV7031DPWR | C2876045 |
@@ -46,8 +46,10 @@ The IMU site is an LGA-14 footprint on SPI0 with a dedicated 1.8 V analog supply
 | +5V_BUCK (always-on) | +BATT | LMR51430YFDDCR buck (U4), L3 4.7 uH | Battery-side 5 V source. |
 | +5V | +5V_BUCK / +5V_USB | TPS2116DRLR mux (U5) | Auto-selects battery vs USB source. |
 | +3.3V | +5V | LP5912-3.3DRVR (U7) | MCU IOVDD and VREG input, IMU I/O, microSD, OSD chain. |
-| +1.8V_GYRO | +5V | LP5912-1.8DRVR (U15) | Dedicated IMU analog supply. |
+| +1.8V_GYRO | +5V | LP5912-1.8DRVR (U15) in the schematic, NCV8187AMT180TAG (U6) on the board | Dedicated IMU analog supply. See the note below. |
 | +1.1V core | +3.3V | RP2354B internal switching regulator, L1 | MCU core. |
+
+**1.8 V LDO, schematic and layout out of sync.** `power.kicad_sch` carries U15 LP5912-1.8DRVR (WSON-6), while `OpenFC.kicad_pcb` and the production panel `OpenFC_Panel.kicad_pcb` still carry U6 NCV8187AMT180TAG (WDFN-6). Boards fabricated from the current layout therefore ship with the NCV8187. This is the only part difference between schematic and board; the schematic additionally has solder pads J45 and J46 that are not placed on the PCB. Resolving which part stays is an open decision, see [REV3_CHANGELIST.md](REV3_CHANGELIST.md).
 
 ## Connectivity and I/O
 
@@ -105,14 +107,14 @@ microSD push-push slot (Card1, LCSC C393941) on SPI1. No onboard SPI flash.
 
 Target firmware is **Betaflight** on the RP2350 (PICO) platform; the RP2354B uses the Raspberry Pi Pico SDK (C/C++). PIO blocks drive the DShot motor outputs, the software UARTs, the LED strip, and the analog-OSD pixel timing. The RP2350 framebuffer OSD driver (FB_OSD) is merged upstream: [betaflight/betaflight#14882](https://github.com/betaflight/betaflight/pull/14882), merged 2026-04-22.
 
-Rev 2 boards fly with a rework pin mapping baked into the Betaflight target (`OPENFC_LITE_RP2350B`), compensating for the Rev 2 GND-short defect described in [REV3_CHANGELIST.md](REV3_CHANGELIST.md).
+The Betaflight target is `OPENFC_LITE_RP2350B`. Its Rev 2 pin mapping is a rework mapping, see [REV3_CHANGELIST.md](REV3_CHANGELIST.md) for the defect it works around.
 
-## Variants and revisions
+## Variants
 
-A smaller sibling, [OpenFC-Lite-Mini](https://github.com/incutec-hw/OpenFC-Lite-Mini) (20 x 20 mm, RP2354A), shares this design; the two differ in MCU package, GPIO count, and some I/O. This full-size board adds bigger pads, more I/O, and OSD debug pads. Fabrication sets are generated per revision into `hardware/production/` (gitignored) with the Fabrication Toolkit from the panel project (`hardware/OpenFC_Panel.kicad_pro`) and the staged Rev 3 changes in [REV3_CHANGELIST.md](REV3_CHANGELIST.md).
+The sibling [OpenFC-Lite-Mini](https://github.com/incutec-hw/OpenFC-Lite-Mini) shares this design. The two differ in MCU package, GPIO count, and some I/O; this full-size board adds bigger pads, more I/O, and OSD debug pads.
 
 ## Revisions
 
-- **Rev3** (staged, not implemented): change list collected during Rev 2 bring-up, see [hardware/docs/REV3_CHANGELIST.md](hardware/docs/REV3_CHANGELIST.md). Headline items: fix KiCad-induced GND shorts on GPIO0-3/28/31, fix reversed gyro LED, decide the production IMU.
-- **Rev2** (2026-08, current): flown. Boards fly with a rework pin mapping baked into the Betaflight target (`OPENFC_LITE_RP2350B`) that works around GND shorts on GPIO0-3, GPIO28, and GPIO31. Assembled with BMI270 while the schematic still carries LSM6DSV16XTR.
+- **Rev3** (staged, not implemented): change list collected during Rev 2 bring-up, see [REV3_CHANGELIST.md](REV3_CHANGELIST.md).
+- **Rev2** (2026-08, current): flown. Open defects and decisions are in [REV3_CHANGELIST.md](REV3_CHANGELIST.md).
 - **Rev1**: first prototype, bench-tested.

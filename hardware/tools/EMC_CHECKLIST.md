@@ -4,7 +4,7 @@
 
 | Source | Frequency | Notes |
 |---|---|---|
-| LMR51420/30 bucks U3, U4 | 1.1 MHz fundamental + harmonics to ~200 MHz | Strongest radiator |
+| LMR51430 bucks U3, U4 | 1.1 MHz fundamental + harmonics to ~200 MHz | Strongest radiator |
 | RP2350 internal core buck | ~400 kHz variable | Hard to isolate, close to MCU |
 | 12 MHz crystal X1 | 12 MHz + harmonics | Can alias into RX bands |
 | DShot600 motor outputs | 600 kHz, 12-20 ns edges | Broadband from fast edges |
@@ -27,7 +27,7 @@
 - Place >=10 mm from any switch node (L1, L2, L3)
 - Over solid inner GND plane, no splits underneath
 - 1.8V_GYRO rail: continuous GND return, no crossings
-- NCV8187 LDO output within 5 mm of IMU VDD pin
+- 1.8 V gyro LDO output within 5 mm of IMU VDD pin
 - IMU CS/SCK/MOSI/MISO tightly grouped with GND ref, NOT over SW nodes
 - 100 nF VDD + 100 nF VDDIO within 1 mm of pins
 - SPI1 (SD card) not parallel to SPI0 (IMU) with <0.5 mm spacing
@@ -41,7 +41,7 @@
 
 ## 4. USB D+/D-
 
-- 27 ohm series R immediately next to MCU pins 66/67
+- 30 ohm series R (R10, R11) immediately next to MCU pins 66/67
 - 90 ohm differential impedance target
 - Continuous GND plane beneath full length, no splits
 - GND stitching vias flanking any layer transition
