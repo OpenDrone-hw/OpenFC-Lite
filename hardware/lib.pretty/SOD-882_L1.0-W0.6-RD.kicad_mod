@@ -1,12 +1,12 @@
 (footprint "SOD-882_L1.0-W0.6-RD"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 0 -4 0)
 		(layer "F.SilkS")
-		(uuid "08b4c7e6-c569-45b7-8683-06795587bba4")
+		(uuid "619841cd-5151-4a03-8e38-150752f34753")
 		(effects
 			(font
 				(size 1 1)
@@ -17,7 +17,7 @@
 	(property "Value" "SOD-882_L1.0-W0.6-RD"
 		(at 0 4 0)
 		(layer "F.Fab")
-		(uuid "024803cb-fab9-4e92-a642-ed6d5720d8f1")
+		(uuid "8d84f55c-fbd5-4127-8e53-9edd7f0b160f")
 		(effects
 			(font
 				(size 1 1)
@@ -29,7 +29,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "6b83e6d3-ba43-4a4f-ad10-dea7a02434fa")
+		(uuid "f7a739a1-3a41-4f62-839e-f965d81f57df")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -41,7 +41,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "8ff5a0f7-6de0-48ce-9f60-274895d5bc9a")
+		(uuid "61ffca79-ccf3-4f42-8a85-954841a987f5")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -50,6 +50,7 @@
 		)
 	)
 	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_circle
 		(center -0.5 0.3)
 		(end -0.47 0.3)
@@ -59,12 +60,12 @@
 		)
 		(fill no)
 		(layer "F.Fab")
-		(uuid "39a94ce1-9cf6-4ade-88e3-e9f1fbcd0db4")
+		(uuid "534b614d-3c1a-4206-a4a9-1b9e694d9d72")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 0)
 		(layer "F.Fab")
-		(uuid "aadb1db6-9cf9-4d4e-b0f1-777b542d7ef7")
+		(uuid "01175328-e97f-4c13-8d6d-2123a71c0f6c")
 		(effects
 			(font
 				(size 1 1)
@@ -76,18 +77,18 @@
 		(at -0.35 0)
 		(size 0.4 0.7)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "995da20b-e3cf-458f-8993-c52076d53faa")
+		(uuid "4be52611-0724-434e-b6d9-26edc3fde62c")
 	)
 	(pad "2" smd rect
 		(at 0.35 0)
 		(size 0.4 0.7)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "9562fd9a-3b62-4886-b02f-c6bf0263ff38")
+		(uuid "67d68c53-a22f-4002-9710-b4716b505fe4")
 	)
 	(embedded_fonts no)
 	(model "${KIPRJMOD}/lib.3dshapes/SOD-882_L1.0-W0.6-H0.5-LS0.65.wrl"
 		(offset
-			(xyz -911.61 887.73 0)
+			(xyz 0 0 0)
 		)
 		(scale
 			(xyz 1 1 1)
