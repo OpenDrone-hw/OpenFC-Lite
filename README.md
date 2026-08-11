@@ -1,6 +1,6 @@
 # OpenFC-Lite
 
-Open-source Betaflight flight controller built on the RP2354B, part of the incutec OpenDrone line. 6-layer PCB, 30.5 x 30.5 mm mounting pattern, 3S-6S input, microSD blackbox, PIO-driven analog OSD. Motor outputs are signal-level DShot lines to an external 4-in-1 ESC over the standard 8-pin connector; there are no onboard motor drivers, barometer, or integrated receiver. A smaller sibling, [OpenFC-Lite-Mini](https://github.com/OpenDrone-hw/OpenFC-Lite-Mini) (20 x 20 mm, RP2354A), shares this design. Designed in KiCad 10 for JLCPCB assembly. Full design detail: [hardware/docs/DESIGN.md](hardware/docs/DESIGN.md).
+Open-source Betaflight flight controller built on the RP2354B, part of the incutec OpenDrone line. 6-layer PCB, 30.5 x 30.5 mm mounting pattern, 3S-8S input, microSD blackbox, PIO-driven analog OSD. Motor outputs are signal-level DShot lines to an external 4-in-1 ESC over the standard 8-pin connector; there are no onboard motor drivers, barometer, or integrated receiver. A smaller sibling, [OpenFC-Lite-Mini](https://github.com/OpenDrone-hw/OpenFC-Lite-Mini) (20 x 20 mm, RP2354A), shares this design. Designed in KiCad 10 for JLCPCB assembly. Full design detail: [hardware/docs/DESIGN.md](hardware/docs/DESIGN.md).
 
 <p>
 <img src="images/openfc-lite-rev2-top.png" width="400" alt="OpenFC-Lite Rev 2 top" />
@@ -38,7 +38,7 @@ OpenFC-Lite is **certified open source hardware** by the [Open Source Hardware A
 | OSD | Analog, PIO-driven discrete chain (comparator, op-amp, SPDT switch), no OSD ASIC |
 | UARTs | 4: 2 hardware + 2 PIO software UARTs |
 | Motor outputs | 4 signal-level DShot lines to an external 4-in-1 ESC |
-| Input | +BATT, 3S-6S LiPo |
+| Input | +BATT, 3S-8S LiPo |
 | USB | USB-C, configuration and flashing |
 | PCB | 6-layer, 38.9 x 38.9 mm; 30.5 x 30.5 mm mounting, 4x 4.0 mm holes |
 
@@ -48,7 +48,7 @@ Part-level detail (regulators, OSD chain, connector pinouts) is in [hardware/doc
 
 | Path | Contents |
 |---|---|
-| `hardware/` | KiCad 10 project: schematics, PCB, panel, project-local libraries |
+| `hardware/` | KiCad 10 project: schematics, PCB, project-local libraries |
 | `hardware/docs/` | Design documentation ([DESIGN.md](hardware/docs/DESIGN.md), [REV3_CHANGELIST.md](hardware/docs/REV3_CHANGELIST.md)) |
 | `hardware/tools/` | Analysis and metadata scripts (kicad-skip / pcbnew) |
 | `hardware/production/` | Fabrication exports (generated, gitignored), see [Manufacturing](#manufacturing) |
@@ -59,7 +59,6 @@ Part-level detail (regulators, OSD chain, connector pinouts) is in [hardware/doc
 
 - Root schematic: `hardware/OpenFC.kicad_sch`, six sub-sheets: `rp2350a` (MCU, USB, crystal), `power`, `imu`, `osd`, `blackbox`, `pads`
 - Board layout: `hardware/OpenFC.kicad_pcb`, 6 copper layers
-- Panel for production: `hardware/OpenFC_Panel.kicad_pro` / `hardware/OpenFC_Panel.kicad_pcb`
 
 Custom parts (MCU, regulators, connectors, crystal, card slot) come from the project-local libraries `hardware/lib.kicad_sym`, `hardware/lib.pretty/` and `hardware/lib.3dshapes/`. Passives, LEDs, test points and power symbols come from KiCad's stock libraries, so a stock KiCad 10 install is required. The project lib tables also declare the shared `Incutec` library from the `libs/KiCad-Library` submodule, which new parts go into; clone with `--recursive` so that reference resolves.
 
@@ -79,7 +78,7 @@ kicad-cli pcb export gerbers -o out/ hardware/OpenFC.kicad_pcb
 
 ## Manufacturing
 
-Fabricated and assembled at JLCPCB: 6-layer board, LCSC parts. Per-revision BOM, CPL, and gerber sets are generated into `hardware/production/` (gitignored) from the panel project with the Fabrication Toolkit, using the tracked `hardware/fabrication-toolkit-options.json`.
+Fabricated and assembled at JLCPCB: 6-layer board, LCSC parts. Per-revision BOM, CPL, and gerber sets are generated into `hardware/production/` (gitignored) from `hardware/OpenFC.kicad_pcb` with the Fabrication Toolkit, using the tracked `hardware/fabrication-toolkit-options.json`.
 
 ## Contributing
 
