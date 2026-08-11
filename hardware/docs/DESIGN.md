@@ -20,9 +20,9 @@ Single RP2354B does everything: flight control, USB, DShot, software UARTs, LED 
 | Function | Ref | Part | LCSC |
 |---|---|---|---|
 | MCU | U2 | RP2354B (QFN-80, 2 MB stacked flash) | C39843328 |
-| IMU (schematic) | U9 | LSM6DSV16XTR (LGA-14) | C5267406 |
-| 10 V buck (switchable) | U3 | LMR51430YFDDCR | C5219261 |
-| 5 V buck (always-on) | U4 | LMR51430YFDDCR | C5219261 |
+| IMU | U9 | BMI270 (LGA-14) | C2836813 |
+| 10 V buck (switchable) | U6 | LMR51635YDDCR | C45262770 |
+| 5 V buck (always-on) | U16 | LMR51635YDDCR | C45262770 |
 | Buck inductors | L2, L3 | XRTC303020D4R7MBCA 4.7 uH | C39846837 |
 | 5 V power mux | U5 | TPS2116DRLR | C3235557 |
 | 3.3 V LDO | U7 | LP5912-3.3DRVR | C524780 |
@@ -36,20 +36,20 @@ Single RP2354B does everything: flight control, USB, DShot, software UARTs, LED 
 
 ## IMU
 
-The IMU site is an LGA-14 footprint on SPI0 with a dedicated 1.8 V analog supply, wired so that pin-compatible parts from several vendors fit (universal IMU wiring per the schematic note: BMI270, ST LSM6 family, TDK). A CLKIN line is routed but unused by the LSM6DSV16XTR; it exists for pin-compatible IMUs that support it. The schematic and BOM carry **LSM6DSV16XTR** (U9); **Rev 2 boards are assembled with BMI270**. The production IMU choice is an open Rev 3 decision, see [REV3_CHANGELIST.md](REV3_CHANGELIST.md).
+The IMU site is an LGA-14 footprint on SPI0 with a dedicated 1.8 V analog supply, wired so that pin-compatible parts from several vendors fit (universal IMU wiring per the schematic note: BMI270, ST LSM6 family, TDK). A CLKIN line is routed but unused by the BMI270; it exists for pin-compatible IMUs that support it. Schematic, BOM and board all carry **BMI270** (U9).
 
 ## Power tree
 
 | Rail | Source | Regulator | Notes |
 |---|---|---|---|
-| +10V (switchable) | +BATT | LMR51430YFDDCR buck (U3), L2 4.7 uH | EN gated by the MCU (10V_ENABLE net). FB divider 100k : 6.49k sets about 9.85 V; 22 uF output cap (C26). Feeds the VTX connector. |
-| +5V_BUCK (always-on) | +BATT | LMR51430YFDDCR buck (U4), L3 4.7 uH | Battery-side 5 V source. |
+| +10V (switchable) | +BATT | LMR51635YDDCR buck (U6), L2 4.7 uH | EN gated by the MCU (10V_ENABLE net). FB divider 100k : 8.87k against the 0.8 V reference sets 9.82 V; 22 uF output cap (C26). Feeds the VTX connector. |
+| +5V_BUCK (always-on) | +BATT | LMR51635YDDCR buck (U16), L3 4.7 uH | Battery-side 5 V source. FB divider 100k : 19.1k sets 4.99 V. |
 | +5V | +5V_BUCK / +5V_USB | TPS2116DRLR mux (U5) | Auto-selects battery vs USB source. |
 | +3.3V | +5V | LP5912-3.3DRVR (U7) | MCU IOVDD and VREG input, IMU I/O, microSD, OSD chain. |
-| +1.8V_GYRO | +5V | LP5912-1.8DRVR (U15) in the schematic, NCV8187AMT180TAG (U6) on the board | Dedicated IMU analog supply. See the note below. |
+| +1.8V_GYRO | +5V | LP5912-1.8DRVR (U15) | Dedicated IMU analog supply. PG output drives the D9 indicator through R39. |
 | +1.1V core | +3.3V | RP2354B internal switching regulator, L1 | MCU core. |
 
-**1.8 V LDO, schematic and layout out of sync.** `power.kicad_sch` carries U15 LP5912-1.8DRVR (WSON-6), while `OpenFC.kicad_pcb` and the production panel `OpenFC_Panel.kicad_pcb` still carry U6 NCV8187AMT180TAG (WDFN-6). Boards fabricated from the current layout therefore ship with the NCV8187. This is the only part difference between schematic and board; the schematic additionally has solder pads J45 and J46 that are not placed on the PCB. Resolving which part stays is an open decision, see [REV3_CHANGELIST.md](REV3_CHANGELIST.md).
+Solder pads J45 and J46 exist in the schematic but are not placed on the PCB. See [REV3_CHANGELIST.md](REV3_CHANGELIST.md).
 
 ## Connectivity and I/O
 
