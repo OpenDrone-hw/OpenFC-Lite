@@ -48,7 +48,7 @@ Part-level detail (regulators, OSD chain, connector pinouts) is in [hardware/doc
 
 | Path | Contents |
 |---|---|
-| `hardware/` | KiCad 10 project: schematics, PCB, panel, project-local libraries |
+| `hardware/` | KiCad 10 project: schematics, PCB, project-local libraries |
 | `hardware/docs/` | Design documentation ([DESIGN.md](hardware/docs/DESIGN.md), [REV3_CHANGELIST.md](hardware/docs/REV3_CHANGELIST.md)) |
 | `hardware/tools/` | Analysis and metadata scripts (kicad-skip / pcbnew) |
 | `hardware/production/` | Fabrication exports (generated, gitignored), see [Manufacturing](#manufacturing) |
@@ -59,7 +59,6 @@ Part-level detail (regulators, OSD chain, connector pinouts) is in [hardware/doc
 
 - Root schematic: `hardware/OpenFC.kicad_sch`, six sub-sheets: `rp2350a` (MCU, USB, crystal), `power`, `imu`, `osd`, `blackbox`, `pads`
 - Board layout: `hardware/OpenFC.kicad_pcb`, 6 copper layers
-- Panel for production: `hardware/OpenFC_Panel.kicad_pro` / `hardware/OpenFC_Panel.kicad_pcb`
 
 Custom parts (MCU, regulators, connectors, crystal, card slot) come from the project-local libraries `hardware/lib.kicad_sym`, `hardware/lib.pretty/` and `hardware/lib.3dshapes/`. Passives, LEDs, test points and power symbols come from KiCad's stock libraries, so a stock KiCad 10 install is required. The project lib tables also declare the shared `Incutec` library from the `libs/KiCad-Library` submodule, which new parts go into; clone with `--recursive` so that reference resolves.
 
@@ -79,7 +78,7 @@ kicad-cli pcb export gerbers -o out/ hardware/OpenFC.kicad_pcb
 
 ## Manufacturing
 
-Fabricated and assembled at JLCPCB: 6-layer board, LCSC parts. Per-revision BOM, CPL, and gerber sets are generated into `hardware/production/` (gitignored) from the panel project with the Fabrication Toolkit, using the tracked `hardware/fabrication-toolkit-options.json`.
+Fabricated and assembled at JLCPCB: 6-layer board, LCSC parts. Per-revision BOM, CPL, and gerber sets are generated into `hardware/production/` (gitignored) from `hardware/OpenFC.kicad_pcb` with the Fabrication Toolkit, using the tracked `hardware/fabrication-toolkit-options.json`.
 
 ## Contributing
 
