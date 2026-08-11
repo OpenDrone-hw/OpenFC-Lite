@@ -111,7 +111,7 @@ The Betaflight target is `OPENFC_LITE_RP2350B`. Its Rev 2 pin mapping is a rewor
 
 ## Variants
 
-The sibling [OpenFC-Lite-Mini](https://github.com/incutec-hw/OpenFC-Lite-Mini) shares this design. The two differ in MCU package, GPIO count, and some I/O; this full-size board adds bigger pads, more I/O, and OSD debug pads.
+The sibling [OpenFC-Lite-Mini](https://github.com/OpenDrone-hw/OpenFC-Lite-Mini) shares this design. The two differ in MCU package, GPIO count, and some I/O; this full-size board adds bigger pads, more I/O, and OSD debug pads.
 
 ## Revisions
 

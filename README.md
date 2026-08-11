@@ -1,6 +1,6 @@
 # OpenFC-Lite
 
-Open-source Betaflight flight controller built on the RP2354B, part of the incutec OpenDrone line. 6-layer PCB, 30.5 x 30.5 mm mounting pattern, 3S-8S input, microSD blackbox, PIO-driven analog OSD. Motor outputs are signal-level DShot lines to an external 4-in-1 ESC over the standard 8-pin connector; there are no onboard motor drivers, barometer, or integrated receiver. A smaller sibling, [OpenFC-Lite-Mini](https://github.com/incutec-hw/OpenFC-Lite-Mini) (20 x 20 mm, RP2354A), shares this design. Designed in KiCad 10 for JLCPCB assembly. Full design detail: [hardware/docs/DESIGN.md](hardware/docs/DESIGN.md).
+Open-source Betaflight flight controller built on the RP2354B, part of the incutec OpenDrone line. 6-layer PCB, 30.5 x 30.5 mm mounting pattern, 3S-8S input, microSD blackbox, PIO-driven analog OSD. Motor outputs are signal-level DShot lines to an external 4-in-1 ESC over the standard 8-pin connector; there are no onboard motor drivers, barometer, or integrated receiver. A smaller sibling, [OpenFC-Lite-Mini](https://github.com/OpenDrone-hw/OpenFC-Lite-Mini) (20 x 20 mm, RP2354A), shares this design. Designed in KiCad 10 for JLCPCB assembly. Full design detail: [hardware/docs/DESIGN.md](hardware/docs/DESIGN.md).
 
 <p>
 <img src="images/openfc-lite-rev2-top.png" width="400" alt="OpenFC-Lite Rev 2 top" />
@@ -66,7 +66,7 @@ Custom parts (MCU, regulators, connectors, crystal, card slot) come from the pro
 ## Build and export
 
 ```
-git clone --recursive https://github.com/incutec-hw/OpenFC-Lite.git
+git clone --recursive https://github.com/OpenDrone-hw/OpenFC-Lite.git
 ```
 
 Open `hardware/OpenFC.kicad_pro` in KiCad 10. Production exports (gerbers, BOM, CPL) are generated with the [KiCad Fabrication Toolkit](https://github.com/bennymeg/Fabrication-Toolkit) plugin. Headless checks and exports use `kicad-cli`:
