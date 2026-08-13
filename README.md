@@ -1,18 +1,21 @@
 # OpenFC-Lite
 
-Open-source Betaflight flight controller built on the RP2354B, part of the incutec OpenDrone line. 6-layer PCB, 30.5 x 30.5 mm mounting pattern, 3S-8S input, microSD blackbox, PIO-driven analog OSD. Motor outputs are signal-level DShot lines to an external 4-in-1 ESC over the standard 8-pin connector; there are no onboard motor drivers, barometer, or integrated receiver. A smaller sibling, [OpenFC-Lite-Mini](https://github.com/OpenDrone-hw/OpenFC-Lite-Mini) (20 x 20 mm, RP2354A), shares this design. Designed in KiCad 10 for JLCPCB assembly. Full design detail: [hardware/docs/DESIGN.md](hardware/docs/DESIGN.md).
+Open source Betaflight flight controller built on the RP2354B, 30.5 x 30.5 mm mounting
+pattern, part of the incutec OpenDrone line. Motor outputs are signal-level
+DShot to an external 4-in-1 ESC: no onboard motor drivers, no barometer, no
+integrated receiver.
 
 <p>
-<img src="images/openfc-lite-rev2-top.png" width="400" alt="OpenFC-Lite Rev 2 top" />
-<img src="images/openfc-lite-rev2-bottom.png" width="400" alt="OpenFC-Lite Rev 2 bottom" />
+<img src="images/openfc-lite-rev2-top.png" width="400" alt="OpenFC-Lite top" />
+<img src="images/openfc-lite-rev2-bottom.png" width="400" alt="OpenFC-Lite bottom" />
 </p>
 
-## Status
-
-**Hardware validated**, Rev 2, flown.
-Known Rev 2 defects, the rework the flying boards run with, and the staged Rev 3 changes are listed in [hardware/docs/REV3_CHANGELIST.md](hardware/docs/REV3_CHANGELIST.md).
-
-## Certification
+|  |  |
+|---|---|
+| Size | 30.5 x 30.5 mm mounting pattern |
+| MCU | RP2354B |
+| Blackbox | microSD |
+| Firmware | [Betaflight](https://github.com/betaflight/betaflight) |
 
 <a href="https://certification.oshwa.org/be000026.html">
   <picture>
@@ -21,69 +24,34 @@ Known Rev 2 defects, the rework the flying boards run with, and the staged Rev 3
   </picture>
 </a>
 
-OpenFC-Lite is **certified open source hardware** by the [Open Source Hardware Association](https://www.oshwa.org/), OSHWA UID **[BE000026](https://certification.oshwa.org/be000026.html)**.
+Certified open source hardware by the [Open Source Hardware Association](https://www.oshwa.org/),
+OSHWA UID **[BE000026](https://certification.oshwa.org/be000026.html)**.
 
-## Links
+## In the line
 
-- Product page: [opendrone.be/products/openfc-lite](https://opendrone.be/products/openfc-lite)
-- Video channel: [JustFPV on YouTube](https://www.youtube.com/@justfpv1432)
+- [OpenFC-Lite-Mini](https://github.com/OpenDrone-hw/OpenFC-Lite-Mini): 20 x 20 mm, RP2354A, for smaller builds.
+- [OpenESC-30x30](https://github.com/OpenDrone-hw/OpenESC-30x30): the 30.5 x 30.5 mm 4-in-1 ESC this stacks with. This board has no motor
+  drivers, so it needs one.
+- [OpenRX](https://github.com/OpenDrone-hw/OpenRX): ExpressLRS receivers for the
+  4-pin receiver connector.
 
-## Specifications
+## Get one
 
-| Parameter | Value |
-|---|---|
-| MCU | RP2354B, dual-core ARM Cortex-M33, QFN-80, 2 MB stacked flash |
-| IMU | LGA-14 site on SPI0, dedicated 1.8 V analog rail (see [DESIGN.md](hardware/docs/DESIGN.md)) |
-| Blackbox | microSD push-push slot on SPI1 (no onboard SPI flash) |
-| OSD | Analog, PIO-driven discrete chain (comparator, op-amp, SPDT switch), no OSD ASIC |
-| UARTs | 4: 2 hardware + 2 PIO software UARTs |
-| Motor outputs | 4 signal-level DShot lines to an external 4-in-1 ESC |
-| Input | +BATT, 3S-8S LiPo |
-| USB | USB-C, configuration and flashing |
-| PCB | 6-layer, 38.9 x 38.9 mm; 30.5 x 30.5 mm mounting, 4x 4.0 mm holes |
+[opendrone.be](https://opendrone.be)
 
-Part-level detail (regulators, OSD chain, connector pinouts) is in [hardware/docs/DESIGN.md](hardware/docs/DESIGN.md).
-
-## Repository layout
-
-| Path | Contents |
-|---|---|
-| `hardware/` | KiCad 10 project: schematics, PCB, project-local libraries |
-| `hardware/docs/` | Design documentation ([DESIGN.md](hardware/docs/DESIGN.md), [REV3_CHANGELIST.md](hardware/docs/REV3_CHANGELIST.md)) |
-| `hardware/tools/` | Analysis and metadata scripts (kicad-skip / pcbnew) |
-| `hardware/production/` | Fabrication exports (generated, gitignored), see [Manufacturing](#manufacturing) |
-| `libs/KiCad-Library` | Shared Incutec symbol/footprint/3D library (git submodule) |
-| `images/` | Board renders and certification marks |
-
-## Design entry points
-
-- Root schematic: `hardware/OpenFC.kicad_sch`, six sub-sheets: `rp2350a` (MCU, USB, crystal), `power`, `imu`, `osd`, `blackbox`, `pads`
-- Board layout: `hardware/OpenFC.kicad_pcb`, 6 copper layers
-
-Custom parts (MCU, regulators, connectors, crystal, card slot) come from the project-local libraries `hardware/lib.kicad_sym`, `hardware/lib.pretty/` and `hardware/lib.3dshapes/`. Passives, LEDs, test points and power symbols come from KiCad's stock libraries, so a stock KiCad 10 install is required. The project lib tables also declare the shared `Incutec` library from the `libs/KiCad-Library` submodule, which new parts go into; clone with `--recursive` so that reference resolves.
-
-## Build and export
-
-```
-git clone --recursive https://github.com/OpenDrone-hw/OpenFC-Lite.git
-```
-
-Open `hardware/OpenFC.kicad_pro` in KiCad 10. Production exports (gerbers, BOM, CPL) are generated with the [KiCad Fabrication Toolkit](https://github.com/bennymeg/Fabrication-Toolkit) plugin. Headless checks and exports use `kicad-cli`:
-
-```
-kicad-cli sch erc --exit-code-violations hardware/OpenFC.kicad_sch
-kicad-cli pcb drc --exit-code-violations hardware/OpenFC.kicad_pcb
-kicad-cli pcb export gerbers -o out/ hardware/OpenFC.kicad_pcb
-```
-
-## Manufacturing
-
-Fabricated and assembled at JLCPCB: 6-layer board, LCSC parts. Per-revision BOM, CPL, and gerber sets are generated into `hardware/production/` (gitignored) from `hardware/OpenFC.kicad_pcb` with the Fabrication Toolkit, using the tracked `hardware/fabrication-toolkit-options.json`.
+Build videos: [JustFPV](https://www.youtube.com/@justfpv1432)
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+Issues and pull requests are welcome on any repo. KiCad files cannot be merged,
+so say what you intend to change before you do, on
+[Discord](https://discord.gg/v3sWmTcx3R).
+
+The design itself, the part list and the layout constraints are in
+[AGENTS.md](AGENTS.md). How everything works:
+[CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-Hardware licensed under [CERN-OHL-S-2.0](https://ohwr.org/cern_ohl_s_v2.txt). See [LICENSE](LICENSE).
+Hardware licensed under [CERN-OHL-S-2.0](https://ohwr.org/cern_ohl_s_v2.txt),
+see [LICENSE](LICENSE).
