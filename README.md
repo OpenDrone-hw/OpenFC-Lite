@@ -15,6 +15,8 @@ signal-level DShot to an external 4-in-1 ESC: no onboard motor drivers.
 [![Video](https://img.shields.io/badge/YouTube-How%20Flight%20Controllers%20Work-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=XDYZoMRJFeQ)
 [![OSHWA](https://img.shields.io/badge/OSHWA-BE000026-0099b0)](https://certification.oshwa.org/be000026.html)
 
+Maintained by [@Just4Stan](https://github.com/Just4Stan).
+
 ## Specifications
 
 | | |
@@ -24,14 +26,17 @@ signal-level DShot to an external 4-in-1 ESC: no onboard motor drivers.
 | IMU | BMI270 |
 | Barometer | None |
 | Blackbox | microSD |
-| OSD | Analog |
+| OSD | Analog and digital |
+| UARTs | 4 |
 | Motor outputs | 4x DShot, bidirectional |
 | RX | External, CRSF or SBUS |
-| BEC | 10 V switchable + 5 V always-on |
+| Input | 3-8S LiPo |
+| BEC | 10 V switchable + 5 V always-on, 3.5 A |
 | Current sense | Yes |
 | USB | USB-C |
-| Mounting | 30.5 x 30.5 mm |
-| PCB | 6-layer |
+| Mounting | 30.5 x 30.5 mm, 4.0 mm holes |
+| Dimensions | 37.9 x 37.9 mm |
+| PCB | 6-layer, 1.6 mm |
 
 Technical write-up, part list and layout constraints: [AGENTS.md](AGENTS.md).
 
