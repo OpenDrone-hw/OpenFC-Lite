@@ -30,7 +30,7 @@ Maintained by [@Just4Stan](https://github.com/Just4Stan).
 | UARTs | 4 |
 | Motor outputs | 4x DShot, bidirectional |
 | RX | External, CRSF or SBUS |
-| Input | 3-8S LiPo |
+| Input | 3-8S LiPo (9.0-33.6 V) |
 | BEC | 10 V switchable + 5 V always-on, 3.5 A |
 | Current sense | Yes |
 | USB | USB-C |
