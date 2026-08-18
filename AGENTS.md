@@ -184,6 +184,20 @@ configurator flashes over USB. The analog OSD is rendered by a PIO program the
 target carries with it. PIO budget: PIO0 DShot, PIO1 the PIO UARTs, PIO2 LED
 strip and OSD.
 
+Betaflight is GPL-3.0, so the source matching that uf2 ships with it. Tag
+`opendrone-2026.6.0-alpha-20260806` in
+[Just4Stan/betaflight](https://github.com/Just4Stan/betaflight/tree/opendrone-2026.6.0-alpha-20260806),
+target definitions in the pinned
+[Just4Stan/config](https://github.com/Just4Stan/config/tree/opendrone-2026.6.0-alpha-20260806)
+submodule:
+
+```
+git clone --recurse-submodules=src/config \
+  -b opendrone-2026.6.0-alpha-20260806 https://github.com/Just4Stan/betaflight
+```
+
+Rebuild a uf2 with any later firmware and the tag has to move with it.
+
 ## Layout rules
 
 - The IMU's 1.8 V analog supply is deliberately separate from the 3.3 V logic
