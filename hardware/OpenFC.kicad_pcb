@@ -28399,7 +28399,7 @@
 			(uuid "9e9e81cd-f490-4361-9f94-07c09c25831e")
 		)
 		(embedded_fonts no)
-		(model "/Users/stan/OpenDrone/hardware/OpenFC-Lite/hardware/lib.3dshapes/SOD-123_L2.8-W1.8-LS3.7-RD.wrl"
+		(model "${KIPRJMOD}/lib.3dshapes/SOD-123_L2.8-W1.8-LS3.7-RD.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -30015,7 +30015,7 @@
 			(uuid "528fee60-61fd-46bb-9022-6a725d96b79f")
 		)
 		(embedded_fonts no)
-		(model "/Users/stan/OpenDrone/hardware/OpenFC-Lite/hardware/lib.3dshapes/SOD-123_L2.8-W1.8-LS3.7-RD.wrl"
+		(model "${KIPRJMOD}/lib.3dshapes/SOD-123_L2.8-W1.8-LS3.7-RD.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
