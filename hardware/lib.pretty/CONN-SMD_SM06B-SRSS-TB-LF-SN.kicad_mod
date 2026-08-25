@@ -1,12 +1,12 @@
 (footprint "CONN-SMD_SM06B-SRSS-TB-LF-SN"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 0 -5.94 0)
 		(layer "F.SilkS")
-		(uuid "d24c0d26-2f48-4858-a176-15300a990868")
+		(uuid "470ea13a-2302-4cc7-907e-990408d0972e")
 		(effects
 			(font
 				(size 1 1)
@@ -17,7 +17,7 @@
 	(property "Value" "CONN-SMD_SM06B-SRSS-TB-LF-SN"
 		(at 0 5.94 0)
 		(layer "F.Fab")
-		(uuid "6f40af74-225c-49a0-aff1-88d816e98fdb")
+		(uuid "213846c2-3ef6-4d9e-abc5-a5dabf864d7a")
 		(effects
 			(font
 				(size 1 1)
@@ -29,7 +29,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "bebde609-6d17-474f-a854-eed9092d4510")
+		(uuid "16bd9d06-db99-4974-9d8f-b071cbb568ab")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -41,7 +41,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "df72af0a-0713-40ee-b20b-2707243cc982")
+		(uuid "77bc514e-3ced-4279-b71d-1d2242aa40f4")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -50,6 +50,7 @@
 		)
 	)
 	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
 		(start -3.9 -1.62)
 		(end -3.9 0.7)
@@ -58,7 +59,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "3b454c4d-061c-437b-bf8d-0db91dc6e1d5")
+		(uuid "e2cdb8b2-5ed8-49dd-86e0-1a3e372f6abd")
 	)
 	(fp_line
 		(start -3.9 -1.62)
@@ -68,7 +69,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "c29c284f-5bc5-4091-b836-d0a9086ffeb5")
+		(uuid "3abfb7e5-1560-42d9-85c3-c8eca1cde8ae")
 	)
 	(fp_line
 		(start -2.82 2.5)
@@ -78,7 +79,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "69cbd863-a293-4c9b-bd6f-605ae5b0f0d5")
+		(uuid "a6363685-1355-45ae-8ba9-72ac0228ded4")
 	)
 	(fp_line
 		(start 3.03 -1.62)
@@ -88,7 +89,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "e7beda08-9c6a-4d10-ad9c-e96002a574be")
+		(uuid "4de5d7e8-3098-40d4-89d2-0587740af782")
 	)
 	(fp_line
 		(start 3.9 -1.62)
@@ -98,12 +99,12 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "de351b5f-b302-4937-a5ff-a9fab31cb79b")
+		(uuid "0e1a296b-be85-4dab-b8eb-0a7a05db818e")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 0)
 		(layer "F.Fab")
-		(uuid "58332b41-11f6-41e9-b951-631c397b6af0")
+		(uuid "2032875d-39f7-49ee-afc5-cbd9ddf74aee")
 		(effects
 			(font
 				(size 1 1)
@@ -116,61 +117,61 @@
 		(size 0.6 1.55)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.15)
-		(uuid "8cafc616-ab8c-44aa-ad97-f3bfadafb152")
+		(uuid "388d15a7-7148-4b52-b4d7-823dc1cde5b4")
 	)
 	(pad "2" smd roundrect
 		(at -1.5 -1.94)
 		(size 0.6 1.55)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.15)
-		(uuid "10c633ec-6d73-4f97-be5b-b9009f304aa4")
+		(uuid "01d90e14-1d48-4677-a89b-48bb5a27add6")
 	)
 	(pad "3" smd roundrect
 		(at -0.5 -1.94)
 		(size 0.6 1.55)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.15)
-		(uuid "40e6ae82-70ae-4589-99bc-2478a272ec53")
+		(uuid "5cf91abc-84d4-4b19-a0a8-32196237d6e0")
 	)
 	(pad "4" smd roundrect
 		(at 0.5 -1.94)
 		(size 0.6 1.55)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.15)
-		(uuid "dc86426a-5de2-4021-99fe-42795657af70")
+		(uuid "3d843f75-5d74-446f-9825-5b5c7dceaf6a")
 	)
 	(pad "5" smd roundrect
 		(at 1.5 -1.94)
 		(size 0.6 1.55)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.15)
-		(uuid "43fc11ff-8b11-4e8d-b9b2-32f5b5613b80")
+		(uuid "2bbb8b0e-1e1a-44bf-b0f7-2e97db29eb9d")
 	)
 	(pad "6" smd roundrect
 		(at 2.5 -1.94)
 		(size 0.6 1.55)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.15)
-		(uuid "1d4806a8-862d-4d6d-9cf2-f1e20012d48c")
+		(uuid "5de9e7f7-fa43-4b90-a53f-64cd4ffc789d")
 	)
 	(pad "7" smd roundrect
 		(at 3.8 1.94)
 		(size 1.2 1.8)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.25)
-		(uuid "67abf703-575d-4630-87b7-de3a227dcb11")
+		(uuid "15840d79-ff69-41dc-a15a-f50dd278f370")
 	)
 	(pad "8" smd roundrect
 		(at -3.8 1.94)
 		(size 1.2 1.8)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.25)
-		(uuid "ccbf49a9-2fdb-42f2-a709-1e5e23eb9959")
+		(uuid "e64410e2-2961-410a-bb72-63b7d43f2682")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/lib.3dshapes/CONN-SMD_SR1.00-WS-6P.wrl"
+	(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM06B-SRSS-TB_1x06-1MP_P1.00mm_Horizontal.step"
 		(offset
-			(xyz 0 -0.11 -0)
+			(xyz 0 0 0)
 		)
 		(scale
 			(xyz 1 1 1)

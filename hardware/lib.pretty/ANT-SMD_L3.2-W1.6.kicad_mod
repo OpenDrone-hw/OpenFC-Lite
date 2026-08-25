@@ -6,7 +6,7 @@
 	(property "Reference" "REF**"
 		(at 0 -4 0)
 		(layer "F.SilkS")
-		(uuid "b0352760-2ad3-4f96-9b8f-ecdf183a7511")
+		(uuid "bdaaa8ec-d3f5-482b-aa5a-90ef5239e356")
 		(effects
 			(font
 				(size 1 1)
@@ -17,7 +17,7 @@
 	(property "Value" "ANT-SMD_L3.2-W1.6"
 		(at 0 4 0)
 		(layer "F.Fab")
-		(uuid "c23e5a7e-9206-40e8-a453-5b8ecaa2a1f2")
+		(uuid "7bf53de9-061e-47a3-8468-b9735249771b")
 		(effects
 			(font
 				(size 1 1)
@@ -29,7 +29,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "8c04031a-0f14-433e-a285-54eac2d966ea")
+		(uuid "2ad685f4-c1d0-4a70-bdaf-e25b80d92574")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -40,7 +40,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "b3c7d3f9-dc3a-4961-8fde-942efb2bb9b8")
+		(uuid "623280d4-383b-4b26-85dc-bc65354e0ee7")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -57,7 +57,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "e8e80b58-6334-4b0e-9df9-31ffefd9b947")
+		(uuid "b39f142a-913c-4e0c-be52-cbc141bc7170")
 	)
 	(fp_line
 		(start -0.76 -0.25)
@@ -67,7 +67,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "2caa5210-c5c5-41b5-b7b2-a64b642c7860")
+		(uuid "f1cdc785-c38b-4c8d-98e1-a58368027b2a")
 	)
 	(fp_line
 		(start -0.76 0.25)
@@ -77,7 +77,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "9ac0250a-af8f-46aa-a3e1-3b98ccf51275")
+		(uuid "f47f6d3b-21b4-4f2e-b18a-1ec444f6aee6")
 	)
 	(fp_line
 		(start -0.25 -0.25)
@@ -87,7 +87,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "81da7cb5-b30d-4dcc-9e47-58fa3418afbb")
+		(uuid "0ce2c744-f4b6-4294-bc74-33f6c0999fb4")
 	)
 	(fp_line
 		(start -0.25 0.25)
@@ -97,7 +97,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "ed74729c-5be1-47e5-849c-7752ff8544b1")
+		(uuid "0ebb317e-7b71-4e2d-a7f9-84c9b81e2c41")
 	)
 	(fp_line
 		(start 1.52 1.05)
@@ -107,7 +107,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "6dfe3253-0e2d-4c16-9d2f-26fb86e8207b")
+		(uuid "7111156d-d540-423d-a087-c5bc46cf8609")
 	)
 	(fp_circle
 		(center -1.6 0.8)
@@ -118,12 +118,12 @@
 		)
 		(fill no)
 		(layer "F.Fab")
-		(uuid "a92bbb3d-af71-4782-8d97-35b45323fb92")
+		(uuid "ffe6babb-b363-472e-9a34-95dec1805631")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 0)
 		(layer "F.Fab")
-		(uuid "695202c5-4d7c-40fd-a53b-d460bd9e3cd6")
+		(uuid "a77e9ef1-753f-4088-9220-90a5770df905")
 		(effects
 			(font
 				(size 1 1)
@@ -135,24 +135,24 @@
 		(at -1.58 0)
 		(size 1 1.75)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "3cb2372c-7097-435c-a0ae-e17fed347282")
+		(uuid "f110e3cf-d4b2-4726-90be-7e5a811cd53c")
 	)
 	(pad "2" smd rect
 		(at 1.58 0)
 		(size 1 1.75)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "3bc7ba61-c2aa-4013-a10a-dd08f02130e6")
+		(uuid "e854a583-684a-4f75-85b6-ff197d500784")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/lib.3dshapes/ANT-SMD_L3.2-W1.6-H1.3.wrl"
+	(model "${KICAD10_3DMODEL_DIR}/RF_Antenna.3dshapes/Johanson_2450AT18x100.step"
 		(offset
-			(xyz 0 -0 -0)
+			(xyz 0 0 0)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 0 0 180)
+			(xyz 0 0 0)
 		)
 	)
 )
