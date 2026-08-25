@@ -210,6 +210,7 @@ Rebuild a uf2 with any later firmware and the tag has to move with it.
 
 | Rev | Date | Change |
 |---|---|---|
+| Rev3.3 | 2026-08-25 | Export `OpenFC-Lite-rev3.3`, current. Silkscreen rebranded OpenDrone -> incutec; rev text pipeline-synced. Board thickness ruled 1.6 mm (stackup block in the board file still malformed at ~1.0 mm, pending GUI repair). No electrical changes. |
 | Rev 3.1 | 2026-08-14 | Current. TPS2116 mux replaced by the DSK24 diode-OR into +4v5. All vias 0.35/0.2 mm, rule floors on the line standard. |
 | Rev 3 | 2026-08-11 | LMR51635 bucks raise input to 3S-8S, LP5912-1.8 gyro LDO, BMI270 IMU. |
 | Rev 2 | 2026-06-06 | Flown. |
