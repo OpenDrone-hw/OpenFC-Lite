@@ -7803,7 +7803,7 @@
 		(embedded_fonts no)
 		(model "${KIPRJMOD}/lib.3dshapes/DFN-3L_L1.0-W0.6-H0.5-P0.65-BR.wrl"
 			(offset
-				(xyz 0.01 -0 -0)
+				(xyz 0 0 0.5)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -22375,7 +22375,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 -90)
 			)
 		)
 	)
@@ -24403,7 +24403,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -24793,13 +24793,13 @@
 		(embedded_fonts no)
 		(model "${KIPRJMOD}/lib.3dshapes/DFN-3L_L1.0-W0.6-H0.5-P0.65-BR.wrl"
 			(offset
-				(xyz 0.01 -0 0.5)
+				(xyz 0 0 0.5)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -0 -0 -0)
+				(xyz 0 0 0)
 			)
 		)
 	)
@@ -28662,7 +28662,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 -90)
 			)
 		)
 	)
