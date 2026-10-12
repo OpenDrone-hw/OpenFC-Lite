@@ -105,9 +105,12 @@ VBAT sits on its 100k/10k divider with the same 100 nF.
 ## Firmware
 
 [Betaflight](https://github.com/betaflight/betaflight) against a custom target:
-`BOARD_NAME = OPENFC_LITE_RP2350B`, `MANUFACTURER_ID = OPFC`. A prebuilt uf2
-lives in `firmware/`. First flash: hold the boot button, plug in USB-C, copy the
-uf2 onto the RP2350 UF2 drive; after that the configurator flashes over USB.
+`BOARD_NAME = OPENFC_LITE_RP2350B`, `MANUFACTURER_ID = OPFC`. The prebuilt uf2
+for the current revision is `firmware/OpenFC-Lite-<rev>_*.uf2`; images for older
+revisions are in `firmware/archive/`. Rev 2 boards need the I/O remap for their
+shorted nets, target `OPENFC_LITE_REV2_RP2350B`. First flash: hold the boot
+button, plug in USB-C, copy the uf2 onto the RP2350 UF2 drive; after that the
+configurator flashes over USB.
 
 ## Repo
 
