@@ -112,6 +112,28 @@ shorted nets, target `OPENFC_LITE_REV2_RP2350B`. First flash: hold the boot
 button, plug in USB-C, copy the uf2 onto the RP2350 UF2 drive; after that the
 configurator flashes over USB.
 
+Known issues with the current image, found on the OpenFC-Lite-Mini bench
+2026-10-25 and present on this board by the same design (not yet reproduced on
+a Lite):
+
+- The LED strip and the FB OSD both default to PIO2. The OSD program (31 of 32
+  instructions) then no longer fits and the analog OSD stays blank while
+  `status` still shows `OSD: FBOSD`. Workaround: `feature -LED_STRIP`, `save`.
+
+The LED pad itself is fine: Q2 has its gate on 3.3 V and its source on GPIO23,
+with R18 (2.4k to +4v5) on the pad, a non-inverting level shifter. (The
+OpenFC-Lite-Mini's Q6 is gate-driven with the source on GND and does invert.)
+
+Fix: the config in OpenDrone-hw/betaflight-config `opfc-targets` puts the LED
+strip on PIO1 (`PIO_LEDSTRIP_INDEX 1`); it does not set `LED_STRIP_INVERTED`
+(betaflight/betaflight#15900, needed by the Mini only). On this board PIO1 also carries both PIO UARTs
+(TX3/RX3 pads; TX4/RX4 with ESC telemetry on RX4), 4 state machines in total:
+with betaflight/betaflight#15901 receive-only ESC telemetry takes one, so GPS
+on PIOUART0 + ESC telemetry + LED strip fit; both PIO UARTs fully used plus
+the LED strip does not. A new image needs #15901 and a bench run with OSD,
+LED strip, GPS and ESC telemetry before it replaces the one in `firmware/`.
+The upstream target PR follows the OpenFC-Lite-Mini one (betaflight/config#1242).
+
 ## Repo
 
 | | |
