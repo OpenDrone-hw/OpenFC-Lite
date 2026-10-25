@@ -39,6 +39,15 @@ mounting pattern, part of the incutec OpenDrone line.
 
 Technical write-up, part list and layout constraints: [AGENTS.md](AGENTS.md).
 
+## Firmware
+
+Betaflight, target `OPENFC_LITE_RP2350B`. The image is in
+[`firmware/`](firmware/); older ones are in `firmware/archive/`.
+
+If the analog OSD stays blank, run `feature -LED_STRIP` and then `save` in the
+Betaflight Configurator CLI (the LED strip is then off). A firmware update
+that runs the OSD and the LED strip together is in progress.
+
 ## In the line
 
 What pairs with what, and what is available:
