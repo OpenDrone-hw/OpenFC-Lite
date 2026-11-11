@@ -1,4 +1,4 @@
-# OpenFC-Lite
+# OpenFC Lite 30x30
 
 Open-Source RP2350 based Flight Controller (FC), 30.5 x 30.5 mm mounting
 pattern (FPV Drone standard). Part of OpenDrone by Incutec product lineup.
@@ -112,7 +112,7 @@ shorted nets, target `OPENFC_LITE_REV2_RP2350B`. First flash: hold the boot
 button, plug in USB-C, copy the uf2 onto the RP2350 UF2 drive; after that the
 configurator flashes over USB.
 
-Known issues with the current image, found on the OpenFC-Lite-Mini bench
+Known issues with the current image, found on the OpenFC Lite 20x20 bench
 2026-10-25 and present on this board by the same design (not yet reproduced on
 a Lite):
 
@@ -122,7 +122,7 @@ a Lite):
 
 The LED pad itself is fine: Q2 has its gate on 3.3 V and its source on GPIO23,
 with R18 (2.4k to +4v5) on the pad, a non-inverting level shifter. (The
-OpenFC-Lite-Mini's Q6 is gate-driven with the source on GND and does invert.)
+OpenFC Lite 20x20's Q6 is gate-driven with the source on GND and does invert.)
 
 Fix: the config in OpenDrone-hw/betaflight-config `opfc-targets` puts the LED
 strip on PIO1 (`PIO_LEDSTRIP_INDEX 1`); it does not set `LED_STRIP_INVERTED`
@@ -132,7 +132,7 @@ with betaflight/betaflight#15901 receive-only ESC telemetry takes one, so GPS
 on PIOUART0 + ESC telemetry + LED strip fit; both PIO UARTs fully used plus
 the LED strip does not. A new image needs #15901 and a bench run with OSD,
 LED strip, GPS and ESC telemetry before it replaces the one in `firmware/`.
-The upstream target PR follows the OpenFC-Lite-Mini one (betaflight/config#1242).
+The upstream target PR follows the OpenFC Lite 20x20 one (betaflight/config#1242).
 
 ## Repo
 
@@ -152,7 +152,7 @@ The upstream target PR follows the OpenFC-Lite-Mini one (betaflight/config#1242)
 | Datasheets and shared parts | `hardware/KiCad-Library/datasheet/`, indexed with SHA-256 hashes in `datasheet/manifest.json`; `hardware/KiCad-Library/PARTS-USED.md` lists every proven shared part, column `Boards` filtered for `OpenFC-Lite` |
 | License | CERN-OHL-S-2.0 |
 
-**The project is called `OpenFC` here and in [OpenFC-Lite-Mini](https://github.com/OpenDrone-hw/OpenFC-Lite-Mini)**,
+**The project is called `OpenFC` here and in [OpenFC Lite 20x20](https://github.com/OpenDrone-hw/OpenFC-Lite-Mini)**,
 the 20 x 20 mm RP2354A sibling: check which repo you are in before importing a
 part or running an export. A part imported into the wrong one looks like a broken import.
 
