@@ -50,7 +50,23 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.12
+          "border_display_style": 2,
+          "border_hatch_pitch": 0.5,
+          "corner_radius": 0.0,
+          "corner_smoothing": 0,
+          "fill_mode": 0,
+          "hatch_gap": 1.5,
+          "hatch_orientation": 0.0,
+          "hatch_smoothing_level": 0,
+          "hatch_smoothing_value": 0.1,
+          "hatch_thickness": 1.0,
+          "min_clearance": 0.12,
+          "min_island_area": 10.0,
+          "min_thickness": 0.25,
+          "pad_connection": 1,
+          "remove_islands": 0,
+          "thermal_relief_gap": 0.5,
+          "thermal_relief_spoke_width": 0.5
         }
       },
       "diff_pair_dimensions": [
@@ -532,7 +548,6 @@
       "+10V": "rgb(255, 11, 126)",
       "+3.3V": "rgb(220, 255, 167)",
       "+5V": "rgb(255, 55, 57)",
-      "+5V_BUCK": "rgb(255, 69, 48)",
       "+5V_USB": "rgb(255, 115, 56)",
       "+BATT": "rgb(255, 2, 12)"
     },
@@ -758,7 +773,6 @@
     ]
   ],
   "text_variables": {
-    "OPENDRONE_LIB": "${KIPRJMOD}/KiCad-Library",
     "DOC_FIRMWARE": "Betaflight",
     "DOC_HANDLE": "openfc-lite",
     "DOC_INPUT": "+BATT 3S-8S",
@@ -767,7 +781,8 @@
     "DOC_PROTOCOL": "DShot",
     "DOC_RATING": "3S-8S input; rail currents not yet bench-characterized",
     "DOC_TAGLINE": "RP2354B Betaflight flight controller, microSD blackbox, analog OSD, external RX",
-    "DOC_VARIANT": "30×30"
+    "DOC_VARIANT": "30×30",
+    "OPENDRONE_LIB": "${KIPRJMOD}/KiCad-Library"
   },
   "tuning_profiles": {
     "meta": {
