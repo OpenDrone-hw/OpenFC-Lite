@@ -25,7 +25,7 @@ mounting pattern, part of the incutec OpenDrone line.
 | Blackbox | microSD |
 | OSD | Analog and digital |
 | UARTs | 4 |
-| Motor outputs | 4x DShot, bidirectional |
+| General-purpose I/O | 4 PWM-capable pins (GPIO28-31) on the 8-pin connector; the Betaflight target runs bidirectional DShot on them |
 | RX | External, CRSF or SBUS |
 | Input | 3-8S* LiPo (9.0-33.6 V) |
 | BEC | 10 V switchable + 5 V always-on, 3.5 A |
