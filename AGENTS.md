@@ -112,9 +112,8 @@ shorted nets, target `OPENFC_LITE_REV2_RP2350B`. First flash: hold the boot
 button, plug in USB-C, copy the uf2 onto the RP2350 UF2 drive; after that the
 configurator flashes over USB.
 
-Known issues with the current image, found on the OpenFC Lite 20x20 bench
-2026-10-25 and present on this board by the same design (not yet reproduced on
-a Lite):
+Known issue with the image in `firmware/`, found on the OpenFC Lite 20x20
+bench and present on this board because both use the same PIO allocation:
 
 - The LED strip and the FB OSD both default to PIO2. The OSD program (31 of 32
   instructions) then no longer fits and the analog OSD stays blank while
@@ -124,15 +123,13 @@ The LED pad itself is fine: Q2 has its gate on 3.3 V and its source on GPIO23,
 with R18 (2.4k to +4v5) on the pad, a non-inverting level shifter. (The
 OpenFC Lite 20x20's Q6 is gate-driven with the source on GND and does invert.)
 
-Fix: the config in OpenDrone-hw/betaflight-config `opfc-targets` puts the LED
+The config in OpenDrone-hw/betaflight-config `opfc-targets` puts the LED
 strip on PIO1 (`PIO_LEDSTRIP_INDEX 1`); it does not set `LED_STRIP_INVERTED`
 (betaflight/betaflight#15900, needed by the Mini only). On this board PIO1 also carries both PIO UARTs
 (TX3/RX3 pads; TX4/RX4 with ESC telemetry on RX4), 4 state machines in total:
 with betaflight/betaflight#15901 receive-only ESC telemetry takes one, so GPS
 on PIOUART0 + ESC telemetry + LED strip fit; both PIO UARTs fully used plus
-the LED strip does not. A new image needs #15901 and a bench run with OSD,
-LED strip, GPS and ESC telemetry before it replaces the one in `firmware/`.
-The upstream target PR follows the OpenFC Lite 20x20 one (betaflight/config#1242).
+the LED strip does not. An image from that config needs #15901.
 
 ## Repo
 
@@ -142,10 +139,7 @@ The upstream target PR follows the OpenFC Lite 20x20 one (betaflight/config#1242
 | KiCad project | `hardware/OpenFC.kicad_pro` |
 | Root schematic | `hardware/OpenFC.kicad_sch`; sub-sheets `rp2350a` (MCU, USB-C, 12 MHz crystal, boot button, buzzer and LED-strip FETs), `power` (10 V and 5 V bucks, USB/BATT diode-OR, 3.3 V and 1.8 V LDOs), `imu` (IMU on SPI0), `osd` (analog OSD chain), `blackbox` (microSD on SPI1), `pads` (JST SH connectors and solder pads) |
 | Board | `hardware/OpenFC.kicad_pcb`, 6 layers, 1.6 mm |
-| Shared library | `hardware/KiCad-Library/`, pinned submodule of [OpenDrone-hw/KiCad-Library](https://github.com/OpenDrone-hw/KiCad-Library), nickname `OpenDrone`; 3D models and exact component datasheets resolve through `OPENDRONE_LIB` |
 | Design rules | `hardware/OpenFC.kicad_dru`, canonical block only |
-| Board setup | Line standard: 6 layers, 0.09 mm clearance and track, via 0.35 on 0.20 drill |
-| Datasheets and shared parts | `hardware/KiCad-Library/datasheet/`, indexed with SHA-256 hashes in `datasheet/manifest.json`; `hardware/KiCad-Library/PARTS-USED.md` lists every proven shared part, column `Boards` filtered for `OpenFC-Lite` |
 
 **The project is called `OpenFC` here and in [OpenFC Lite 20x20](https://github.com/OpenDrone-hw/OpenFC-Lite-Mini)**,
 the 20 x 20 mm RP2354A sibling: check which repo you are in before importing a
@@ -170,7 +164,7 @@ The [Board rules](#board-rules) at the end of this file apply, a CI-checked copy
 
 | Rev | Date | Change |
 |---|---|---|
-| Rev3.3 | 2026-08-25 | Export `OpenFC-Lite-rev3.3`. Silkscreen rebranded OpenDrone -> incutec for export restriction reasons on flagging anything containing 'Drone'. First Incutec production run. |
+| Rev3.3 | 2026-08-25 | Export `OpenFC-Lite-rev3.3`. Silkscreen rebranded OpenDrone -> incutec for export restriction reasons on flagging anything containing 'Drone'. |
 | Rev 3.1 | 2026-08-14 | TPS2116 mux replaced by the DSK24 diode-OR into +4v5. |
 | Rev 3 | 2026-08-11 | LMR51635 bucks raise input to 3S-8S, LP5912-1.8 gyro LDO, BMI270 IMU. |
 | Rev 2 | 2026-06-06 | Flown. |
@@ -179,6 +173,8 @@ The [Board rules](#board-rules) at the end of this file apply, a CI-checked copy
 ## By task
 
 - Render the board for the README: `$KPY <hardware-tooling>/hardware/kicad/render_board.py hardware/OpenFC.kicad_pcb --outdir images`, KiCad closed.
+- Fill MPN and Manufacturer fields from the LCSC numbers: `python3 hardware/tools/add_mpn_fields.py` (dry run; `--write` saves through kicad-skip, which cannot round-trip KiCad 10 schematics, so do not use `--write`).
+- Audit the design (part inventory, GPIO map, Betaflight target check): `$KPY hardware/tools/audit_design.py`, writes `hardware/tools/design_audit.md`; needs kicad-skip on `KICAD_SKIP_SITE_PACKAGES`.
 
 ## Board rules
 
